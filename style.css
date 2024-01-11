@@ -266,7 +266,7 @@ p {
     /* background-color: #0011a8; */
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     text-align: center;
     font-size: 20px;
@@ -327,6 +327,7 @@ p {
     width: 100%;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     background-image: linear-gradient(rgba(72, 20, 20, 0.1),rgba(232, 16, 16, 0.1));
     backdrop-filter: blur(20px);
