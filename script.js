@@ -1,3 +1,26 @@
+const main=document.querySelector("main")
+const load=document.getElementById("load")
+load.style.display="inline-block"
+var i = 0;
+var txt = '<Rupam/>';
+var speed = 80;
+
+function typeWriter() {
+  if (i < txt.length) {
+    load.innerText += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+typeWriter()
+setTimeout(()=>{
+	load.style.display="none"
+},2000)
+
+
+
+
+
 var t=1
 let menu=document.getElementById('menu')
 let menu2=document.getElementById("menu2")
@@ -20,8 +43,13 @@ menu.addEventListener("click",function (){
 	}
 })
 
-
-
+const date= document.getElementById("date")
+function getDate(){
+	const yr=new Date().getFullYear()
+	
+	date.innerText=yr
+}
+getDate()
 
 
 
