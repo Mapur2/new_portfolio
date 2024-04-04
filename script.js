@@ -2,7 +2,7 @@ const main=document.querySelector("main")
 const load=document.getElementById("load")
 load.style.display="inline-block"
 var i = 0;
-var txt = '<Rupam/>';
+var txt = '<RUPAM/>';
 var speed = 80;
 
 function typeWriter() {
