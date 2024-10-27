@@ -4,8 +4,9 @@ body {
     height: 100%;
     margin: 0px;
     font-family: 'M PLUS Rounded 1c', sans-serif;
-    background-image: linear-gradient(90deg, rgb(250, 169, 17), rgb(247, 215, 112));
+    background-color: black;
     scroll-behavior: smooth;
+    color: white;
 }
 
 .main {
@@ -26,14 +27,14 @@ nav {
     align-self: center;
     position: fixed;
     top: 0;
-    background-image: linear-gradient(135deg, rgba(72, 20, 20, 0.1), rgba(232, 16, 16, 0.1));
     backdrop-filter: blur(20px);
     border: 1px double rgba(39, 31, 31, 0.18);
-    box-shadow: 0px 0px 15px rgb(85, 79, 79);
     overflow: hidden;
+    
 }
 
 .list1 {
+    color: white;
     display: flex;
     margin: 4px;
     font-size: 1.3em;
@@ -59,10 +60,11 @@ nav {
 
 .list-mobile a,
 .list a {
+    color: white;
     text-decoration: none;
-    color: black;
     padding: 0px 4px;
     margin: 0px 6px;
+    background-color: rgb(0, 0, 0);
 }
 
 .list a:hover {
@@ -287,7 +289,7 @@ p {
 #lin {
     height: 40%;
     width: 5%;
-    background-color: #000000;
+    background-color: #ffffff;
     box-shadow: 0px 0px 5px whitesmoke, 0px 0px 10px rgb(19, 16, 16);
 }
 
@@ -308,11 +310,11 @@ p {
 }
 
 .cir {
-    background-color: black;
+    background-color: rgb(255, 255, 255);
     border-radius: 50%;
     height: 40px;
     width: 40px;
-    color: antiquewhite;
+    color: rgb(0, 0, 0);
     text-align: center;
     box-shadow: 0px 0px 15px rgb(48, 47, 47);
 }
@@ -344,9 +346,13 @@ p {
     border: 2px solid #000000;
     padding: 4px;
     box-shadow: 0px 0px 10px rgb(99, 98, 98);
-    background-color: #00025c;
+    background-image: linear-gradient(135deg, rgb(159, 74, 159), rgb(227, 126, 236), purple,rgb(82, 2, 82));
     margin: 15px 7px;
 
+}
+.links:hover{
+    transform: scale(1.1,1.1);
+    transition: 0.5s ease-in;
 }
 
 .links img {
