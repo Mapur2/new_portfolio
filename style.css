@@ -14,20 +14,136 @@ body {
     width: 100%;
     font-size: 30px;
 }
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+
+.btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.fade-in {
-  animation: fadeIn 1s ease-out forwards;
+.btn:hover {
+    background-color: #0056b3;
 }
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay effect */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 10px;
+    width: 90%; /* Adjust width for smaller screens */
+    max-width: 700px;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.modal iframe {
+    width: 100%;
+    height: 60vh; /* Adjust height based on the viewport */
+    border: none;
+    margin-top: 20px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+.download-link {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.download-link:hover {
+    background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%; /* Reduce modal width on smaller screens */
+    }
+
+    .modal iframe {
+        height: 50vh; /* Reduce iframe height for smaller devices */
+    }
+
+    .modal-header {
+        font-size: 18px; /* Adjust font size for smaller screens */
+    }
+
+    .download-link {
+        font-size: 14px; /* Adjust button size */
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 15px; /* Reduce padding on very small devices */
+    }
+
+    .modal iframe {
+        height: 40vh; /* Further reduce iframe height */
+    }
+
+    .modal-header {
+        font-size: 16px; /* Smaller font for header */
+    }
+
+    .close-btn {
+        top: 8px;
+        right: 15px;
+        font-size: 18px;
+    }
+
+    .download-link {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+
 nav {
     height: 70px;
     width: 100%;

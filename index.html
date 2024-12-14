@@ -13,6 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
     <title>Rupam Modak</title>
 </head>
 
@@ -80,8 +82,10 @@
                 </div>
                 <div class="about">
                     <h1>Hi, I am <br>
-                        <span class="">Rupam Modak</span>
+                        <span id="typed-text" class=""></span>
                     </h1>
+
+
                     <section class="animation">
                         <div class="first">
                             <div>Open-Source Contributor</div>
@@ -103,14 +107,22 @@
                         <a href="https://api.whatsapp.com/send?phone=7439578474" target="_blank" class="hov-icon">
                             <i class="fa-brands fa-whatsapp fa-2xl"></i>
                         </a>
-                        <button class="btn">
-                            <a href="./RupamModak_Resume.pdf" download>Resume</a>
-                        </button>
+                        <button class="btn" onclick="openModal()">Preview Resume</button>
                     </div>
                 </div>
             </div>
         </div>
-
+        <!-- Modal -->
+        <div class="modal" id="resumeModal">
+            <div class="modal-content">
+                <button class="close-btn" onclick="closeModal()">×</button>
+                <div class="modal-header">Resume Preview</div>
+                <!-- PDF Preview -->
+                <iframe src="./RupamModak.pdf"></iframe>
+                <!-- Download Link -->
+                <a href="./RupamModak.pdf" download="RupamModak_Resume" class="download-link">Download Resume</a>
+            </div>
+        </div>
         <div class="techno">
             <header>
                 <h1>Tech Stack</h1>
@@ -154,7 +166,8 @@
                 <div class="links">
                     <img src="HotelManagement.png" alt="">
                     <h4>Hotel Management app using Java</h4>
-                    <a href="https://github.com/Mapur2/java-hotel-mananagement" target="_blank"><button>Github</button></a>
+                    <a href="https://github.com/Mapur2/java-hotel-mananagement"
+                        target="_blank"><button>Github</button></a>
                 </div>
                 <div class="links">
                     <img src="sqv.PNG" alt="">
@@ -205,7 +218,8 @@
                         <a href="https://github.com/Mapur2/kaet" target="_blank"><button>Frontend</button></a>
                         &nbsp;
                         &nbsp;
-                        <a href="https://github.com/Mapur2/inventry_backend" target="_blank"><button>Backend</button></a>
+                        <a href="https://github.com/Mapur2/inventry_backend"
+                            target="_blank"><button>Backend</button></a>
                     </div>
                 </div>
             </div>
@@ -224,7 +238,7 @@
                     <a href="https://github.com/Mapur2" target="_blank" class="hov-icon"><i
                             class="fa-brands fa-square-github fa-2xl " style="color: #ffffff;"></i></i></a>
                 </p>
-                <button class="btn"><a href="./RupamModak_Resume.pdf" download>Download Resume</a></button>
+                <button class="btn"><a href="./RupamModak.pdf" download>Download Resume</a></button>
             </div>
             <p>Copyright@Rupam<span id="date"></span></p>
 
@@ -234,6 +248,19 @@
     <div class="loader-wrapper" id="load">
     </div>
     <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const options = {
+                strings: ["Rupam Modak"], // Add the strings you want to display
+                typeSpeed: 100, // Typing speed in milliseconds
+                backSpeed: 20, // Backspacing speed
+                loop: true,    // Loop the typing effect
+            };
+
+            new Typed("#typed-text", options);
+        });
+    </script>
+
 </body>
 
 </html>
