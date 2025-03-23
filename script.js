@@ -61,11 +61,6 @@ function closeModal() {
 	document.getElementById("resumeModal").style.display = "none";
 }
 
-
-
-
-
-
 /* const scriptURL = 'https://script.google.com/macros/s/AKfycbzcHhWDpO6ebB_CkMMpt9sAK2UzSvaDTfKL-P5fchr668VUqL-iFRei3hpJGTo335xD/exec'
 			const form = document.forms['feedback_portfolio']
 		  

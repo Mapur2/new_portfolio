@@ -32,13 +32,15 @@ body {
 
 /* Modal Styles */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;
+    /* Hidden by default */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Overlay effect */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Overlay effect */
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -47,7 +49,8 @@ body {
 .modal-content {
     background-color: white;
     border-radius: 10px;
-    width: 90%; /* Adjust width for smaller screens */
+    width: 90%;
+    /* Adjust width for smaller screens */
     max-width: 700px;
     padding: 20px;
     position: relative;
@@ -63,7 +66,8 @@ body {
 
 .modal iframe {
     width: 100%;
-    height: 60vh; /* Adjust height based on the viewport */
+    height: 60vh;
+    /* Adjust height based on the viewport */
     border: none;
     margin-top: 20px;
 }
@@ -102,34 +106,41 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .modal-content {
-        width: 95%; /* Reduce modal width on smaller screens */
+        width: 95%;
+        /* Reduce modal width on smaller screens */
     }
 
     .modal iframe {
-        height: 50vh; /* Reduce iframe height for smaller devices */
+        height: 50vh;
+        /* Reduce iframe height for smaller devices */
     }
 
     .modal-header {
-        font-size: 18px; /* Adjust font size for smaller screens */
+        font-size: 18px;
+        /* Adjust font size for smaller screens */
     }
 
     .download-link {
-        font-size: 14px; /* Adjust button size */
+        font-size: 14px;
+        /* Adjust button size */
         padding: 8px 16px;
     }
 }
 
 @media (max-width: 480px) {
     .modal-content {
-        padding: 15px; /* Reduce padding on very small devices */
+        padding: 15px;
+        /* Reduce padding on very small devices */
     }
 
     .modal iframe {
-        height: 40vh; /* Further reduce iframe height */
+        height: 40vh;
+        /* Further reduce iframe height */
     }
 
     .modal-header {
-        font-size: 16px; /* Smaller font for header */
+        font-size: 16px;
+        /* Smaller font for header */
     }
 
     .close-btn {
@@ -381,7 +392,8 @@ p {
     height: 50px;
     overflow: hidden;
     margin-left: 1rem;
-    margin-right: 1rem; ;
+    margin-right: 1rem;
+    ;
     border-radius: 20px;
     background-image: linear-gradient(135deg, rgb(166, 4, 235), rgb(116, 18, 221));
     backdrop-filter: blur(20px);
@@ -795,13 +807,20 @@ p {
 
 /* Project Card */
 .project-card {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
+    /* background: rgba(255, 255, 255, 0.15);*/
+    /*backdrop-filter: blur(45px);*/
     padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    /*border-radius: 12px;*/
+    /*box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);*/
     text-align: center;
+    z-index: -1;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10.5px);
+    -webkit-backdrop-filter: blur(10.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .project-card:hover {
