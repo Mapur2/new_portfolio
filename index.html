@@ -4,19 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Rupam Modak - Full Stack Developer, Open Source Contributor, and Competitive Programmer">
-    <meta name="keywords" content="Rupam Modak, Web Developer, Full Stack Developer, Open Source, Competitive Programming">
+    <meta name="description"
+        content="Rupam Modak - Full Stack Developer, Open Source Contributor, and Competitive Programmer">
+    <meta name="keywords"
+        content="Rupam Modak, Web Developer, Full Stack Developer, Open Source, Competitive Programming">
     <meta name="author" content="Rupam Modak">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" href="logo.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <!-- SVG Gradients for Progress Rings -->
+    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
+        <defs>
+            <linearGradient id="githubGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="leetcodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#ffc107;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#f44336;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+    </svg>
 
     <title>Rupam Modak - Full Stack Developer</title>
 </head>
@@ -34,6 +52,7 @@
             <div class="nav-menu">
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#about" class="nav-link">About</a>
+                <a href="#live-stats" class="nav-link">Live Stats</a>
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#experience" class="nav-link">Experience</a>
@@ -44,6 +63,7 @@
         <div class="mobile-menu" id="menu2">
             <a href="#home" class="mobile-link">Home</a>
             <a href="#about" class="mobile-link">About</a>
+            <a href="#live-stats" class="mobile-link">Live Stats</a>
             <a href="#skills" class="mobile-link">Skills</a>
             <a href="#projects" class="mobile-link">Projects</a>
             <a href="#experience" class="mobile-link">Experience</a>
@@ -68,7 +88,8 @@
                         </span> -->
                     </div>
                     <p class="hero-description">
-                        Enthusiastic about backend development, system design, and building scalable solutions. Passionate about contributing to real-world product development through innovative engineering.
+                        Enthusiastic about backend development, system design, and building scalable solutions.
+                        Passionate about contributing to real-world product development through innovative engineering.
                     </p>
                     <div class="hero-actions">
                         <button class="btn btn-primary" onclick="openModal()">
@@ -79,7 +100,8 @@
                         </a>
                     </div>
                     <div class="hero-social">
-                        <a href="https://www.linkedin.com/in/rupam-modak-a87066251/" target="_blank" class="social-link">
+                        <a href="https://www.linkedin.com/in/rupam-modak-a87066251/" target="_blank"
+                            class="social-link">
                             <i class="fab fa-linkedin"></i>
                         </a>
                         <a href="https://github.com/Mapur2" target="_blank" class="social-link">
@@ -114,15 +136,20 @@
                 <div class="about-text">
                     <h3>Passionate Developer & Problem Solver</h3>
                     <p>
-                        I'm a dedicated Computer Science Engineering student at Calcutta Institute of Engineering and Management, 
-                        currently working as a Software Engineer Intern at Gobdu Corporation. With hands-on experience in 
-                        full-stack development, React.js, Node.js, and AWS services, I'm passionate about creating innovative 
+                        I'm a dedicated Computer Science Engineering student at Calcutta Institute of Engineering and
+                        Management,
+                        currently working as a Software Engineer Intern at Gobdu Corporation. With hands-on experience
+                        in
+                        full-stack development, React.js, Node.js, and AWS services, I'm passionate about creating
+                        innovative
                         solutions and contributing to real-world product development.
                     </p>
                     <p>
-                        My professional journey includes internships at both Gobdu Corporation and Lilyport Global, where I've 
-                        gained valuable experience in fintech, compliance systems, GraphQL APIs, and agile methodologies. 
-                        I believe in continuous learning and staying updated with the latest technologies to deliver 
+                        My professional journey includes internships at both Gobdu Corporation and Lilyport Global,
+                        where I've
+                        gained valuable experience in fintech, compliance systems, GraphQL APIs, and agile
+                        methodologies.
+                        I believe in continuous learning and staying updated with the latest technologies to deliver
                         high-quality solutions that make a real impact in the industry.
                     </p>
                     <div class="about-stats">
@@ -144,6 +171,187 @@
                     <img src="dp.jpg" alt="Rupam Modak" class="about-img">
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Live Stats Section -->
+    <section class="live-stats" id="live-stats">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Live Coding Dashboard</h2>
+                <p class="section-subtitle">Real-time insights into my coding journey and achievements</p>
+            </div>
+
+            <!-- Main Stats Overview -->
+            <div class="dashboard-overview">
+                <div class="overview-card github-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="card-title">
+                            <h3>GitHub Activity</h3>
+                            <p>Open Source Contributions</p>
+                        </div>
+                    </div>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="github-repos">-</div>
+                            <div class="stat-label">Repositories</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="github-stars">-</div>
+                            <div class="stat-label">Total Stars</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="github-contributions">-</div>
+                            <div class="stat-label">This Year</div>
+                        </div>
+                    </div>
+                    <div class="progress-ring">
+                        <svg class="progress-ring-svg" width="120" height="120">
+                            <circle class="progress-ring-circle-bg" cx="60" cy="60" r="50"></circle>
+                            <circle class="progress-ring-circle github-progress" cx="60" cy="60" r="50"></circle>
+                        </svg>
+                        <div class="progress-text">
+                            <span id="github-streak">-</span>
+                            <small>Day Streak</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overview-card leetcode-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="card-title">
+                            <h3>LeetCode Progress</h3>
+                            <p>Algorithm Mastery</p>
+                        </div>
+                    </div>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="leetcode-solved">-</div>
+                            <div class="stat-label">Problems Solved</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="leetcode-rank">-</div>
+                            <div class="stat-label">Global Rank</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="leetcode-contest">-</div>
+                            <div class="stat-label">Contest Rating</div>
+                        </div>
+                    </div>
+                    <div class="progress-ring">
+                        <svg class="progress-ring-svg" width="120" height="120">
+                            <circle class="progress-ring-circle-bg" cx="60" cy="60" r="50"></circle>
+                            <circle class="progress-ring-circle leetcode-progress" cx="60" cy="60" r="50"></circle>
+                        </svg>
+                        <div class="progress-text">
+                            <span id="leetcode-acceptance">-%</span>
+                            <small>Acceptance</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts and Visualizations -->
+            <div class="charts-container">
+                <!-- GitHub Activity Chart -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3><i class="fab fa-github"></i> GitHub Activity Heatmap</h3>
+                        <div class="chart-controls">
+                            <button class="chart-btn active" data-period="year">Year</button>
+                            <button class="chart-btn" data-period="month">Month</button>
+                        </div>
+                    </div>
+                    <div class="chart-content">
+                        <div class="github-calendar" id="github-calendar">
+                            <div class="loading-spinner">
+                                <div class="spinner"></div>
+                                <p>Loading GitHub activity...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LeetCode Difficulty Distribution -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3><i class="fas fa-chart-pie"></i> Problem Difficulty Distribution</h3>
+                    </div>
+                    <div class="chart-content">
+                        <div class="pie-chart-container">
+                            <div class="pie-chart" id="leetcode-pie-chart">
+                                <div class="pie-center">
+                                    <div class="pie-total" id="pie-total">-</div>
+                                    <div class="pie-subtitle">Solved</div>
+                                </div>
+                            </div>
+                            <div class="pie-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color easy"></span>
+                                    <span class="legend-text">Easy Problems</span>
+                                    <span class="legend-count" id="easy-count">-</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color medium"></span>
+                                    <span class="legend-text">Medium Problems</span>
+                                    <span class="legend-count" id="medium-count">-</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color hard"></span>
+                                    <span class="legend-text">Hard Problems</span>
+                                    <span class="legend-count" id="hard-count">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card skills-card">
+                    <div class="chart-header">
+                        <h3><i class="fas fa-chart-bar"></i> Coding Skills Progress</h3>
+                    </div>
+                    <div class="chart-content">
+                        <div class="skills-progress">
+                            <div class="skill-bar">
+                                <div class="skill-label">
+                                    <span>Problem Solving</span>
+                                    <span class="skill-percentage" id="problem-solving-pct">-</span>
+                                </div>
+                                <div class="skill-track">
+                                    <div class="skill-fill problem-solving" id="problem-solving-bar"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-label">
+                                    <span>Algorithm Design</span>
+                                    <span class="skill-percentage" id="algorithm-pct">-</span>
+                                </div>
+                                <div class="skill-track">
+                                    <div class="skill-fill algorithm" id="algorithm-bar"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-bar">
+                                <div class="skill-label">
+                                    <span>Consistency</span>
+                                    <span class="skill-percentage" id="consistency-pct">-</span>
+                                </div>
+                                <div class="skill-track">
+                                    <div class="skill-fill consistency" id="consistency-bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </section>
 
@@ -239,7 +447,8 @@
                         <ul class="timeline-responsibilities">
                             <li>Contributed to React.js frontend and Node.js backend development with AWS services</li>
                             <li>Wrote comprehensive unit tests and debugged APIs for improved system reliability</li>
-                            <li>Supported deployment processes and gained exposure to fintech and compliance systems</li>
+                            <li>Supported deployment processes and gained exposure to fintech and compliance systems
+                            </li>
                             <li>Participated in real-world product development and agile methodologies</li>
                         </ul>
                     </div>
@@ -263,9 +472,9 @@
                         <h3>Bachelor of Technology - Computer Science Engineering</h3>
                         <h4>Calcutta Institute of Engineering and Management</h4>
                         <span class="timeline-date">2022 - 2026</span>
-                        <p>Currently pursuing B.Tech in Computer Science Engineering with focus on software development, 
-                           algorithms, and system design. Relevant coursework includes Data Structures, Algorithms, 
-                           Database Management Systems, and Software Engineering.</p>
+                        <p>Currently pursuing B.Tech in Computer Science Engineering with focus on software development,
+                            algorithms, and system design. Relevant coursework includes Data Structures, Algorithms,
+                            Database Management Systems, and Software Engineering.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -274,8 +483,8 @@
                         <h3>Higher Secondary Education</h3>
                         <h4>National Gems Higher Secondary School</h4>
                         <span class="timeline-date">2007 - 2022</span>
-                        <p>Completed higher secondary education with strong foundation in mathematics and science, 
-                           achieving excellent academic performance and developing critical thinking skills.</p>
+                        <p>Completed higher secondary education with strong foundation in mathematics and science,
+                            achieving excellent academic performance and developing critical thinking skills.</p>
                     </div>
                 </div>
             </div>
@@ -296,10 +505,12 @@
                         <img src="inventry.png" alt="Inventory Management System">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="https://github.com/Mapur2/inventoryManager" target="_blank" class="project-link">
+                                <a href="https://github.com/Mapur2/inventoryManager" target="_blank"
+                                    class="project-link">
                                     <i class="fab fa-github"></i> Frontend
                                 </a>
-                                <a href="https://github.com/Mapur2/inventry_backend" target="_blank" class="project-link">
+                                <a href="https://github.com/Mapur2/inventry_backend" target="_blank"
+                                    class="project-link">
                                     <i class="fas fa-server"></i> Backend
                                 </a>
                             </div>
@@ -307,7 +518,8 @@
                     </div>
                     <div class="project-content">
                         <h3>Inventory Management System</h3>
-                        <p>Full-stack inventory management application with real-time stock tracking, sales analytics, and purchase management capabilities.</p>
+                        <p>Full-stack inventory management application with real-time stock tracking, sales analytics,
+                            and purchase management capabilities.</p>
                         <div class="project-tech">
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">Node.js</span>
@@ -326,7 +538,8 @@
                                 <a href="https://github.com/Mapur2/url_shortner" target="_blank" class="project-link">
                                     <i class="fab fa-github"></i> Code
                                 </a>
-                                <a href="https://urlshortner-production-0cf2.up.railway.app/" target="_blank" class="project-link">
+                                <a href="https://urlshortner-production-0cf2.up.railway.app/" target="_blank"
+                                    class="project-link">
                                     <i class="fas fa-external-link-alt"></i> Demo
                                 </a>
                             </div>
@@ -423,10 +636,12 @@
                         <img src="sorting.png" alt="Sorting Visualizer">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="https://github.com/Mapur2/sorting_visualizer" target="_blank" class="project-link">
+                                <a href="https://github.com/Mapur2/sorting_visualizer" target="_blank"
+                                    class="project-link">
                                     <i class="fab fa-github"></i> Code
                                 </a>
-                                <a href="https://sorting-visualizer-jade-delta.vercel.app/" target="_blank" class="project-link">
+                                <a href="https://sorting-visualizer-jade-delta.vercel.app/" target="_blank"
+                                    class="project-link">
                                     <i class="fas fa-external-link-alt"></i> Demo
                                 </a>
                             </div>
@@ -456,8 +671,8 @@
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Let's Connect</h3>
-                    <p>I'm always interested in new opportunities and exciting projects. 
-                       Whether you have a question or just want to say hi, feel free to reach out!</p>
+                    <p>I'm always interested in new opportunities and exciting projects.
+                        Whether you have a question or just want to say hi, feel free to reach out!</p>
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
@@ -482,7 +697,8 @@
                         </div>
                     </div>
                     <div class="contact-social">
-                        <a href="https://www.linkedin.com/in/rupam-modak-a87066251/" target="_blank" class="social-link">
+                        <a href="https://www.linkedin.com/in/rupam-modak-a87066251/" target="_blank"
+                            class="social-link">
                             <i class="fab fa-linkedin"></i>
                         </a>
                         <a href="https://github.com/Mapur2" target="_blank" class="social-link">
@@ -542,7 +758,7 @@
         </div>
     </div>
 
-    
+
     <script src="script.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
