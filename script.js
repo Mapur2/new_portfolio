@@ -769,6 +769,229 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
 });
 
+// Chatbot functionality
+class Chatbot {
+    constructor() {
+        this.apiEndpoint = 'https://new-portfolio-72m9.onrender.com';
+        this.isOpen = false;
+        this.isLoading = false;
+        this.init();
+    }
+
+    init() {
+        this.setupEventListeners();
+        this.hideDemoQuestions();
+    }
+
+    setupEventListeners() {
+        // Enter key support for input
+        const input = document.getElementById('chatbotInput');
+        if (input) {
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    this.sendMessage();
+                }
+            });
+        }
+    }
+
+    toggle() {
+        const container = document.getElementById('chatbotContainer');
+        const toggle = document.getElementById('chatbotToggle');
+        
+        if (!container || !toggle) return;
+
+        this.isOpen = !this.isOpen;
+        
+        if (this.isOpen) {
+            container.classList.add('active');
+            toggle.classList.add('hidden');
+            // Focus on input when opened
+            setTimeout(() => {
+                const input = document.getElementById('chatbotInput');
+                if (input) input.focus();
+            }, 300);
+        } else {
+            container.classList.remove('active');
+            toggle.classList.remove('hidden');
+        }
+    }
+
+    hideDemoQuestions() {
+        const demoQuestions = document.querySelector('.demo-questions');
+        if (demoQuestions) {
+            demoQuestions.style.display = 'none';
+        }
+    }
+
+    showDemoQuestions() {
+        const demoQuestions = document.querySelector('.demo-questions');
+        if (demoQuestions) {
+            demoQuestions.style.display = 'block';
+        }
+    }
+
+    addMessage(content, isUser = false) {
+        const messagesContainer = document.getElementById('chatbotMessages');
+        if (!messagesContainer) return;
+
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+
+        const avatar = document.createElement('div');
+        avatar.className = 'message-avatar';
+        avatar.innerHTML = isUser ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
+
+        const messageContent = document.createElement('div');
+        messageContent.className = 'message-content';
+        messageContent.innerHTML = `<p>${content}</p>`;
+
+        messageDiv.appendChild(avatar);
+        messageDiv.appendChild(messageContent);
+        messagesContainer.appendChild(messageDiv);
+
+        // Scroll to bottom
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    showTypingIndicator() {
+        const messagesContainer = document.getElementById('chatbotMessages');
+        if (!messagesContainer) return;
+
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'message bot-message typing-message';
+        typingDiv.innerHTML = `
+            <div class="message-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="typing-indicator">
+                <div class="typing-dots">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+        `;
+
+        messagesContainer.appendChild(typingDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    hideTypingIndicator() {
+        const typingMessage = document.querySelector('.typing-message');
+        if (typingMessage) {
+            typingMessage.remove();
+        }
+    }
+
+    async sendMessage(message = null) {
+        if (this.isLoading) return;
+
+        const input = document.getElementById('chatbotInput');
+        const sendButton = document.querySelector('.chatbot-send');
+        
+        if (!input && !message) return;
+
+        const messageText = message || input.value.trim();
+        if (!messageText) return;
+
+        // Clear input if not a demo question
+        if (!message && input) {
+            input.value = '';
+        }
+
+        // Disable input and send button
+        this.isLoading = true;
+        if (input) input.disabled = true;
+        if (sendButton) sendButton.disabled = true;
+
+        // Add user message
+        this.addMessage(messageText, true);
+
+        // Hide demo questions after first interaction
+        this.hideDemoQuestions();
+
+        // Show typing indicator
+        this.showTypingIndicator();
+
+        try {
+            const response = await fetch(this.apiEndpoint+"api/chat", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: messageText
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            
+            // Hide typing indicator
+            this.hideTypingIndicator();
+
+            // Add bot response
+            if (data.response) {
+                this.addMessage(data.response);
+            } else {
+                this.addMessage('Sorry, I couldn\'t process your request. Please try again.');
+            }
+
+        } catch (error) {
+            console.error('Chatbot API Error:', error);
+            
+            // Hide typing indicator
+            this.hideTypingIndicator();
+
+            // Show error message
+            this.addMessage('Sorry, I\'m having trouble connecting right now. Please try again later.');
+        } finally {
+            // Re-enable input and send button
+            this.isLoading = false;
+            if (input) input.disabled = false;
+            if (sendButton) sendButton.disabled = false;
+            
+            // Focus back on input
+            if (input) input.focus();
+        }
+    }
+
+    sendDemoQuestion(question) {
+        this.sendMessage(question);
+    }
+}
+
+// Initialize chatbot
+let chatbot;
+
+document.addEventListener('DOMContentLoaded', () => {
+    chatbot = new Chatbot();
+});
+
+// Global functions for HTML onclick events
+function toggleChatbot() {
+    if (chatbot) {
+        chatbot.toggle();
+    }
+}
+
+function sendMessage() {
+    if (chatbot) {
+        chatbot.sendMessage();
+    }
+}
+
+function sendDemoQuestion(question) {
+    if (chatbot) {
+        chatbot.sendDemoQuestion(question);
+    }
+}
+
 // Alternative LeetCode API implementation using web scraping
 class LeetCodeAPI {
     constructor(username) {

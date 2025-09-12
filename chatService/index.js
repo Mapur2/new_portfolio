@@ -1,9 +1,13 @@
 const express = require('express');
 const axios = require('axios');
 require('dotenv').config();
-
+const cors = require("cors")
 const app = express();
 app.use(express.json());
+app.use(cors({
+  origin: "*",
+  credentials: true // allow frontend to access cookies
+}));
 
 const resumeData = {
   personal_info: {
