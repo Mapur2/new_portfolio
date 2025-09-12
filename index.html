@@ -775,17 +775,18 @@
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        
+
         <div class="chatbot-messages" id="chatbotMessages">
             <div class="message bot-message">
                 <div class="message-avatar">
                     <i class="fas fa-robot"></i>
                 </div>
                 <div class="message-content">
-                    <p>Hi! I'm here to help you learn more about Rupam. Feel free to ask me anything about his experience, skills, or projects!</p>
+                    <p>Hi! I'm here to help you learn more about Rupam. Feel free to ask me anything about his
+                        experience, skills, or projects!</p>
                 </div>
             </div>
-            
+
             <!-- Demo Questions -->
             <div class="demo-questions">
                 <p class="demo-label">Try asking:</p>
@@ -809,7 +810,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="chatbot-input-container">
             <div class="chatbot-input">
                 <input type="text" id="chatbotInput" placeholder="Ask me anything about Rupam..." maxlength="500">
@@ -822,9 +823,41 @@
 
     <!-- Chatbot Toggle Button -->
     <button class="chatbot-toggle" id="chatbotToggle" onclick="toggleChatbot()">
-        <i class="fas fa-comments"></i>
-        <span class="chatbot-toggle-text">Chat</span>
+        <div class="relative flex items-center gap-2">
+            <!-- Animated Icon -->
+            <div class="relative">
+                <i class="fas fa-comments text-white text-xl animate-bounce"></i>
+                <!-- Glowing ring effect -->
+                <span class="absolute -inset-1 rounded-full animate-ping bg-blue-400 opacity-75"></span>
+            </div>
+
+            <!-- Text -->
+            <span class="chatbot-toggle-text text-white font-bold">Chat</span>
+
+            <!-- "New" Badge -->
+            <span class="bg-red-500 text-xs text-white font-semibold px-2 py-0.5 rounded-full animate-pulse">
+                New ✨
+            </span>
+        </div>
     </button>
+
+    <style>
+        .chatbot-toggle {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            padding: 10px 16px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+            transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.6);
+        }
+    </style>
+
 
 
     <script src="script.js"></script>

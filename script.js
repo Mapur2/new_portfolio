@@ -916,7 +916,7 @@ class Chatbot {
         this.showTypingIndicator();
 
         try {
-            const response = await fetch(this.apiEndpoint+"api/chat", {
+            const response = await fetch(this.apiEndpoint+"/api/chat", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
