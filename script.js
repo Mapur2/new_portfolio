@@ -6,20 +6,20 @@ if (load) {
     load.style.display = "flex";
     load.classList.add("loader-text");
 
-var i = 0;
-var txt = '<RUPAM/>';
-var speed = 80;
+    var i = 0;
+    var txt = '<RUPAM/>';
+    var speed = 80;
 
-function typeWriter() {
-  if (i < txt.length) {
+    function typeWriter() {
+        if (i < txt.length) {
             const loaderText = load.querySelector('.loader-text');
             if (loaderText) {
                 loaderText.innerText += txt.charAt(i);
             }
-    i++;
-    setTimeout(typeWriter, speed);
-  }
-}
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
 
     typeWriter();
 
@@ -29,9 +29,9 @@ function typeWriter() {
 }
 
 // Modern Navigation and Scroll Effects
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Add scroll effect to navigation
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         const nav = document.querySelector('.navbar');
         if (window.scrollY > 50) {
             nav.classList.add('scrolled');
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver(function(entries) {
+    const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
@@ -107,7 +107,7 @@ let menu = document.getElementById('menu');
 let menu2 = document.getElementById("menu2");
 
 if (menu && menu2) {
-    menu.addEventListener("click", function() {
+    menu.addEventListener("click", function () {
         console.log("click");
         if (t == 1) {
             menu.classList = "fa-solid fa-x fa-xl nav-toggle";
@@ -178,7 +178,7 @@ function openModal() {
         modal.style.display = "flex";
         modal.style.opacity = "0";
         modal.style.transform = "scale(0.8)";
-        
+
         // Animate modal in
         setTimeout(() => {
             modal.style.transition = "opacity 0.3s ease, transform 0.3s ease";
@@ -194,7 +194,7 @@ function closeModal() {
         modal.style.transition = "opacity 0.3s ease, transform 0.3s ease";
         modal.style.opacity = "0";
         modal.style.transform = "scale(0.8)";
-        
+
         setTimeout(() => {
             modal.style.display = "none";
         }, 300);
@@ -202,7 +202,7 @@ function closeModal() {
 }
 
 // Close modal when clicking outside
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     const modal = document.getElementById("resumeModal");
     if (event.target === modal) {
         closeModal();
@@ -210,7 +210,7 @@ document.addEventListener('click', function(event) {
 });
 
 // Close modal with Escape key
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape') {
         closeModal();
     }
@@ -220,12 +220,12 @@ document.addEventListener('keydown', function(event) {
 function initTypingAnimation() {
     const typingTexts = document.querySelectorAll('.typing-text');
     let currentIndex = 0;
-    
+
     function typeText() {
         const currentText = typingTexts[currentIndex];
         const text = currentText.textContent;
         currentText.textContent = '';
-        
+
         let i = 0;
         const typeInterval = setInterval(() => {
             if (i < text.length) {
@@ -239,11 +239,11 @@ function initTypingAnimation() {
             }
         }, 100);
     }
-    
+
     function eraseText() {
         const currentText = typingTexts[currentIndex];
         const text = currentText.textContent;
-        
+
         let i = text.length;
         const eraseInterval = setInterval(() => {
             if (i > 0) {
@@ -258,7 +258,7 @@ function initTypingAnimation() {
             }
         }, 50);
     }
-    
+
     if (typingTexts.length > 0) {
         typeText();
     }
@@ -279,12 +279,12 @@ window.addEventListener('scroll', () => {
 // Add hover effects to project cards
 document.addEventListener('DOMContentLoaded', () => {
     const projectCards = document.querySelectorAll('.project-card');
-    
+
     projectCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
             card.style.transform = 'translateY(-10px) scale(1.02)';
         });
-        
+
         card.addEventListener('mouseleave', () => {
             card.style.transform = 'translateY(0) scale(1)';
         });
@@ -301,7 +301,7 @@ function animateStats() {
                 const finalValue = parseInt(target.textContent);
                 let currentValue = 0;
                 const increment = finalValue / 50;
-                
+
                 const counter = setInterval(() => {
                     currentValue += increment;
                     if (currentValue >= finalValue) {
@@ -311,12 +311,12 @@ function animateStats() {
                         target.textContent = Math.floor(currentValue) + '+';
                     }
                 }, 30);
-                
+
                 observer.unobserve(target);
             }
         });
     });
-    
+
     stats.forEach(stat => observer.observe(stat));
 }
 
@@ -348,20 +348,20 @@ class LiveStats {
         try {
             // Fetch user data
             const userResponse = await fetch(`https://api.github.com/users/${this.githubUsername}`);
-            
+
             if (!userResponse.ok) {
                 throw new Error(`GitHub API error: ${userResponse.status}`);
             }
-            
+
             const userData = await userResponse.json();
 
             // Fetch repositories
             const reposResponse = await fetch(`https://api.github.com/users/${this.githubUsername}/repos?per_page=100`);
-            
+
             if (!reposResponse.ok) {
                 throw new Error(`GitHub Repos API error: ${reposResponse.status}`);
             }
-            
+
             const reposData = await reposResponse.json();
 
             // Calculate total stars
@@ -376,11 +376,11 @@ class LiveStats {
 
         } catch (error) {
             console.error('Error fetching GitHub stats:', error);
-            
+
             // Set fallback values
             this.setErrorValue('github-repos', 'N/A');
             this.setErrorValue('github-stars', 'N/A');
-            
+
             // Try to fetch contributions anyway
             this.fetchGitHubContributions();
         }
@@ -391,27 +391,27 @@ class LiveStats {
             // Using a more reliable GitHub contributions API
             const response = await fetch(`https://github-contributions-api.vercel.app/${this.githubUsername}`);
             const data = await response.json();
-            
+
             if (data && data.contributions) {
                 // Calculate total contributions for current year
                 const currentYear = new Date().getFullYear();
                 let totalContributions = 0;
                 let currentStreak = 0;
-                
+
                 // Find current year data
                 const yearData = data.contributions.find(year => year.year === currentYear);
-                
+
                 if (yearData) {
                     // Calculate total contributions for current year
                     totalContributions = yearData.contributionDays.reduce((sum, day) => sum + day.contributionCount, 0);
-                    
+
                     // Calculate current streak (consecutive days with contributions)
                     const today = new Date();
                     const todayIndex = yearData.contributionDays.findIndex(day => {
                         const dayDate = new Date(day.date);
                         return dayDate.toDateString() === today.toDateString();
                     });
-                    
+
                     if (todayIndex !== -1) {
                         // Count backwards from today
                         for (let i = todayIndex; i >= 0; i--) {
@@ -426,28 +426,28 @@ class LiveStats {
 
                 document.getElementById('github-contributions').textContent = totalContributions;
                 document.getElementById('github-streak').textContent = `${currentStreak} day streak`;
-                
+
             } else {
                 throw new Error('Invalid data structure received');
             }
         } catch (error) {
             console.error('Error fetching GitHub contributions:', error);
-            
+
             // Fallback: Use a simpler approach with GitHub's public events
             try {
                 const eventsResponse = await fetch(`https://api.github.com/users/${this.githubUsername}/events/public?per_page=100`);
                 const eventsData = await eventsResponse.json();
-                
+
                 // Count contributions from events (simplified)
                 const currentYear = new Date().getFullYear();
                 const yearContributions = eventsData.filter(event => {
                     const eventDate = new Date(event.created_at);
                     return eventDate.getFullYear() === currentYear;
                 }).length;
-                
+
                 document.getElementById('github-contributions').textContent = yearContributions;
                 document.getElementById('github-streak').textContent = 'Active contributor';
-                
+
             } catch (fallbackError) {
                 console.error('Fallback also failed:', fallbackError);
                 this.setErrorValue('github-contributions', 'N/A');
@@ -458,74 +458,87 @@ class LiveStats {
 
     async fetchLeetCodeStats() {
         try {
-            // Using the LeetCode API from faisalshohag
+            // ✅ Fetch LeetCode stats from the API
             const response = await fetch(`https://leetcode-api-faisalshohag.vercel.app/${this.leetcodeUsername}`);
             const data = await response.json();
 
             if (data && data.totalSolved !== undefined) {
-                // Calculate acceptance rate
-                const totalSubmissions = data.matchedUserStats?.acSubmissionNum?.[0]?.submissions || 0;
-                const totalAttempts = data.matchedUserStats?.totalSubmissionNum?.[0]?.submissions || 0;
-                const acceptanceRate = totalAttempts > 0 ? ((totalSubmissions / totalAttempts) * 100).toFixed(1) : 0;
+                // ✅ Extract total accepted and total submissions
+                const totalAccepted = data.matchedUserStats?.acSubmissionNum?.[0]?.submissions || 0;
+                const totalSubmissions = data.matchedUserStats?.totalSubmissionNum?.[0]?.submissions || 0;
 
-                // Update DOM with real LeetCode data
+                // ✅ Calculate acceptance rate
+                const acceptanceRate = totalSubmissions > 0
+                    ? ((totalAccepted / totalSubmissions) * 100).toFixed(1)
+                    : 0;
+
+                // ✅ Update DOM elements with data
                 document.getElementById('leetcode-solved').textContent = data.totalSolved;
                 document.getElementById('leetcode-rank').textContent = `#${data.ranking.toLocaleString()}`;
                 document.getElementById('leetcode-contest').textContent = data.contributionPoint || 'N/A';
                 document.getElementById('leetcode-acceptance').textContent = `${acceptanceRate}%`;
 
-                // Update pie chart data
+                // ✅ Update pie chart or counters by difficulty
                 document.getElementById('easy-count').textContent = data.easySolved;
                 document.getElementById('medium-count').textContent = data.mediumSolved;
                 document.getElementById('hard-count').textContent = data.hardSolved;
 
-                // Update achievement badges
+                // ✅ Achievements
                 document.getElementById('problems-achievement').textContent = `${data.totalSolved} solved`;
                 document.getElementById('rating-achievement').textContent = `${data.contributionPoint || 0} points`;
 
-                // Update skills progress bars
-                this.updateSkillsProgress(data);
+                // ✅ Update skills progress (if implemented)
+                this.updateSkillsProgress?.(data);
 
-                // Log the data for debugging
-                console.log('LeetCode Stats Loaded:', {
+                // ✅ Log for debugging
+                console.log('✅ LeetCode Stats Loaded:', {
                     totalSolved: data.totalSolved,
                     ranking: data.ranking,
                     contributionPoint: data.contributionPoint,
-                    acceptanceRate: acceptanceRate,
+                    acceptanceRate,
                     easySolved: data.easySolved,
                     mediumSolved: data.mediumSolved,
-                    hardSolved: data.hardSolved
+                    hardSolved: data.hardSolved,
+                    totalSubmissions,
+                    totalAccepted
                 });
 
             } else {
-                throw new Error('Invalid data received from LeetCode API');
+                throw new Error('Invalid data structure from LeetCode API');
             }
 
         } catch (error) {
-            console.error('Error fetching LeetCode stats:', error);
-            
-            // Fallback to mock data if API fails
+            console.error('❌ Error fetching LeetCode stats:', error);
+
+            // 🧩 Fallback to mock data
             const fallbackData = {
-                solved: 389,
-                rank: 255650,
-                contestRating: 2623,
-                acceptanceRate: 36.4 // Calculated from the API data
+                totalSolved: 416,
+                ranking: 235729,
+                contributionPoint: 2796,
+                acceptanceRate: 37.7,
+                easySolved: 222,
+                mediumSolved: 186,
+                hardSolved: 8
             };
 
-            document.getElementById('leetcode-solved').textContent = fallbackData.solved;
-            document.getElementById('leetcode-rank').textContent = `#${fallbackData.rank.toLocaleString()} rank`;
-            document.getElementById('leetcode-contest').textContent = fallbackData.contestRating;
-            document.getElementById('leetcode-acceptance').textContent = `${fallbackData.acceptanceRate}% acceptance`;
-            
-            // Show error indicator
-            console.warn('Using fallback LeetCode data due to API error');
+            document.getElementById('leetcode-solved').textContent = fallbackData.totalSolved;
+            document.getElementById('leetcode-rank').textContent = `#${fallbackData.ranking.toLocaleString()}`;
+            document.getElementById('leetcode-contest').textContent = fallbackData.contributionPoint;
+            document.getElementById('leetcode-acceptance').textContent = `${fallbackData.acceptanceRate}%`;
+
+            document.getElementById('easy-count').textContent = fallbackData.easySolved;
+            document.getElementById('medium-count').textContent = fallbackData.mediumSolved;
+            document.getElementById('hard-count').textContent = fallbackData.hardSolved;
+
+            console.warn('⚠️ Using fallback LeetCode data due to API error');
         }
     }
+
 
     async loadGitHubCalendar() {
         try {
             const calendarContainer = document.getElementById('github-calendar');
-            
+
             // Create GitHub calendar using multiple reliable sources
             const calendarHTML = `
                 <div class="calendar-wrapper">
@@ -540,9 +553,9 @@ class LiveStats {
                     </div>
                 </div>
             `;
-            
+
             calendarContainer.innerHTML = calendarHTML;
-            
+
         } catch (error) {
             console.error('Error loading GitHub calendar:', error);
             document.getElementById('github-calendar').innerHTML = `
@@ -559,13 +572,13 @@ class LiveStats {
         try {
             const response = await fetch(`https://leetcode-api-faisalshohag.vercel.app/${this.leetcodeUsername}`);
             const data = await response.json();
-            
+
             if (data && data.submissionCalendar) {
                 // Create a simple visualization of LeetCode activity
                 const calendarData = data.submissionCalendar;
                 const currentYear = new Date().getFullYear();
                 const startOfYear = new Date(currentYear, 0, 1).getTime() / 1000;
-                
+
                 // Count submissions for current year
                 let yearSubmissions = 0;
                 Object.keys(calendarData).forEach(timestamp => {
@@ -573,7 +586,7 @@ class LiveStats {
                         yearSubmissions += calendarData[timestamp];
                     }
                 });
-                
+
                 // Create a simple activity indicator
                 const activityHTML = `
                     <div class="leetcode-activity">
@@ -596,7 +609,7 @@ class LiveStats {
                         </div>
                     </div>
                 `;
-                
+
                 // Add LeetCode calendar to the page
                 const leetcodeCalendarContainer = document.createElement('div');
                 leetcodeCalendarContainer.className = 'leetcode-calendar-container';
@@ -606,7 +619,7 @@ class LiveStats {
                         ${activityHTML}
                     </div>
                 `;
-                
+
                 // Insert after GitHub calendar
                 const githubContainer = document.querySelector('.github-calendar-container');
                 if (githubContainer) {
@@ -634,7 +647,7 @@ class LiveStats {
                 <p>Please check your internet connection and try refreshing the page.</p>
             </div>
         `;
-        
+
         document.querySelector('.stats-grid').innerHTML = errorMessage;
     }
 
@@ -652,7 +665,7 @@ class LiveStats {
                 refreshButton.disabled = false;
             });
         };
-        
+
         document.querySelector('.live-stats .container').appendChild(refreshButton);
     }
 
@@ -665,16 +678,16 @@ class LiveStats {
 
         // Problem Solving: Based on total problems solved
         const problemSolvingPct = Math.min(85, (totalProblems / 200) * 100);
-        
+
         // Algorithm Design: Based on medium + hard problems
         const algorithmPct = Math.min(75, ((mediumProblems + hardProblems) / 100) * 100);
-        
+
         // Code Quality: Based on acceptance rate
         const totalSubmissions = data.matchedUserStats?.acSubmissionNum?.[0]?.submissions || 0;
         const totalAttempts = data.matchedUserStats?.totalSubmissionNum?.[0]?.submissions || 0;
         const acceptanceRate = totalAttempts > 0 ? (totalSubmissions / totalAttempts) * 100 : 0;
         const qualityPct = Math.min(90, acceptanceRate);
-        
+
         // Consistency: Based on streak and regular activity
         const consistencyPct = Math.min(80, (totalProblems / 150) * 100);
 
@@ -736,18 +749,18 @@ class LiveStats {
 
         // Generate timeline points based on submission calendar
         const submissionData = data.submissionCalendar;
-        
+
         timelinePoints.innerHTML = '';
-        
+
         // Create 6 timeline points representing different months
         for (let i = 0; i < 6; i++) {
             const point = document.createElement('div');
             point.className = 'timeline-point';
-            
+
             // Calculate submissions for this month (mock data for demonstration)
             const submissions = Math.floor(Math.random() * 50) + 10;
             point.setAttribute('data-value', `${submissions} submissions`);
-            
+
             timelinePoints.appendChild(point);
         }
 
@@ -755,7 +768,7 @@ class LiveStats {
         const totalSubmissions = Object.values(submissionData).reduce((sum, count) => sum + count, 0);
         const timelineLeetcode = document.getElementById('timeline-leetcode');
         const timelineGithub = document.getElementById('timeline-github');
-        
+
         if (timelineLeetcode) timelineLeetcode.textContent = totalSubmissions;
         if (timelineGithub) timelineGithub.textContent = Math.floor(totalSubmissions * 0.8); // Mock GitHub data
     }
@@ -799,11 +812,11 @@ class Chatbot {
     toggle() {
         const container = document.getElementById('chatbotContainer');
         const toggle = document.getElementById('chatbotToggle');
-        
+
         if (!container || !toggle) return;
 
         this.isOpen = !this.isOpen;
-        
+
         if (this.isOpen) {
             container.classList.add('active');
             toggle.classList.add('hidden');
@@ -890,7 +903,7 @@ class Chatbot {
 
         const input = document.getElementById('chatbotInput');
         const sendButton = document.querySelector('.chatbot-send');
-        
+
         if (!input && !message) return;
 
         const messageText = message || input.value.trim();
@@ -916,7 +929,7 @@ class Chatbot {
         this.showTypingIndicator();
 
         try {
-            const response = await fetch(this.apiEndpoint+"/api/chat", {
+            const response = await fetch(this.apiEndpoint + "/api/chat", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -931,7 +944,7 @@ class Chatbot {
             }
 
             const data = await response.json();
-            
+
             // Hide typing indicator
             this.hideTypingIndicator();
 
@@ -944,7 +957,7 @@ class Chatbot {
 
         } catch (error) {
             console.error('Chatbot API Error:', error);
-            
+
             // Hide typing indicator
             this.hideTypingIndicator();
 
@@ -955,7 +968,7 @@ class Chatbot {
             this.isLoading = false;
             if (input) input.disabled = false;
             if (sendButton) sendButton.disabled = false;
-            
+
             // Focus back on input
             if (input) input.focus();
         }
