@@ -368,8 +368,11 @@ class LiveStats {
             const totalStars = reposData.reduce((sum, repo) => sum + repo.stargazers_count, 0);
 
             // Update DOM
-            document.getElementById('github-repos').textContent = userData.public_repos || reposData.length;
-            document.getElementById('github-stars').textContent = `${totalStars} stars`;
+            const reposEl = document.getElementById('github-repos');
+            const starsEl = document.getElementById('github-stars');
+            
+            if (reposEl) reposEl.textContent = userData.public_repos || reposData.length;
+            if (starsEl) starsEl.textContent = `${totalStars} stars`;
 
             // Fetch contribution data (this is a simplified version)
             this.fetchGitHubContributions();
@@ -424,8 +427,11 @@ class LiveStats {
                     }
                 }
 
-                document.getElementById('github-contributions').textContent = totalContributions;
-                document.getElementById('github-streak').textContent = `${currentStreak} day streak`;
+                const contribEl = document.getElementById('github-contributions');
+                const streakEl = document.getElementById('github-streak');
+                
+                if (contribEl) contribEl.textContent = totalContributions;
+                if (streakEl) streakEl.textContent = `${currentStreak} day streak`;
 
             } else {
                 throw new Error('Invalid data structure received');
@@ -445,8 +451,11 @@ class LiveStats {
                     return eventDate.getFullYear() === currentYear;
                 }).length;
 
-                document.getElementById('github-contributions').textContent = yearContributions;
-                document.getElementById('github-streak').textContent = 'Active contributor';
+                const yearContribEl = document.getElementById('github-contributions');
+                const yearStreakEl = document.getElementById('github-streak');
+                
+                if (yearContribEl) yearContribEl.textContent = yearContributions;
+                if (yearStreakEl) yearStreakEl.textContent = 'Active contributor';
 
             } catch (fallbackError) {
                 console.error('Fallback also failed:', fallbackError);
@@ -459,8 +468,16 @@ class LiveStats {
     async fetchLeetCodeStats() {
         try {
             // ✅ Fetch LeetCode stats from the API
+            console.log('Fetching LeetCode stats...');
             const response = await fetch(`https://leetcode-api-faisalshohag.vercel.app/${this.leetcodeUsername}`);
+            console.log('LeetCode API response status:', response.status);
+            
+            if (!response.ok) {
+                throw new Error(`LeetCode API error: ${response.status}`);
+            }
+            
             const data = await response.json();
+            console.log('LeetCode API data received:', data);
 
             if (data && data.totalSolved !== undefined) {
                 // ✅ Extract total accepted and total submissions
@@ -473,19 +490,24 @@ class LiveStats {
                     : 0;
 
                 // ✅ Update DOM elements with data
-                document.getElementById('leetcode-solved').textContent = data.totalSolved;
-                document.getElementById('leetcode-rank').textContent = `#${data.ranking.toLocaleString()}`;
-                document.getElementById('leetcode-contest').textContent = data.contributionPoint || 'N/A';
-                document.getElementById('leetcode-acceptance').textContent = `${acceptanceRate}%`;
+                const solvedEl = document.getElementById('leetcode-solved');
+                const rankEl = document.getElementById('leetcode-rank');
+                const contestEl = document.getElementById('leetcode-contest');
+                const acceptanceEl = document.getElementById('leetcode-acceptance');
+                
+                if (solvedEl) solvedEl.textContent = data.totalSolved;
+                if (rankEl) rankEl.textContent = `#${data.ranking.toLocaleString()}`;
+                if (contestEl) contestEl.textContent = data.contributionPoint || 'N/A';
+                if (acceptanceEl) acceptanceEl.textContent = `${acceptanceRate}%`;
 
                 // ✅ Update pie chart or counters by difficulty
-                document.getElementById('easy-count').textContent = data.easySolved;
-                document.getElementById('medium-count').textContent = data.mediumSolved;
-                document.getElementById('hard-count').textContent = data.hardSolved;
-
-                // ✅ Achievements
-                document.getElementById('problems-achievement').textContent = `${data.totalSolved} solved`;
-                document.getElementById('rating-achievement').textContent = `${data.contributionPoint || 0} points`;
+                const easyEl = document.getElementById('easy-count');
+                const mediumEl = document.getElementById('medium-count');
+                const hardEl = document.getElementById('hard-count');
+                
+                if (easyEl) easyEl.textContent = data.easySolved;
+                if (mediumEl) mediumEl.textContent = data.mediumSolved;
+                if (hardEl) hardEl.textContent = data.hardSolved;
 
                 // ✅ Update skills progress (if implemented)
                 this.updateSkillsProgress?.(data);
@@ -521,14 +543,21 @@ class LiveStats {
                 hardSolved: 8
             };
 
-            document.getElementById('leetcode-solved').textContent = fallbackData.totalSolved;
-            document.getElementById('leetcode-rank').textContent = `#${fallbackData.ranking.toLocaleString()}`;
-            document.getElementById('leetcode-contest').textContent = fallbackData.contributionPoint;
-            document.getElementById('leetcode-acceptance').textContent = `${fallbackData.acceptanceRate}%`;
-
-            document.getElementById('easy-count').textContent = fallbackData.easySolved;
-            document.getElementById('medium-count').textContent = fallbackData.mediumSolved;
-            document.getElementById('hard-count').textContent = fallbackData.hardSolved;
+            const fbSolvedEl = document.getElementById('leetcode-solved');
+            const fbRankEl = document.getElementById('leetcode-rank');
+            const fbContestEl = document.getElementById('leetcode-contest');
+            const fbAcceptanceEl = document.getElementById('leetcode-acceptance');
+            const fbEasyEl = document.getElementById('easy-count');
+            const fbMediumEl = document.getElementById('medium-count');
+            const fbHardEl = document.getElementById('hard-count');
+            
+            if (fbSolvedEl) fbSolvedEl.textContent = fallbackData.totalSolved;
+            if (fbRankEl) fbRankEl.textContent = `#${fallbackData.ranking.toLocaleString()}`;
+            if (fbContestEl) fbContestEl.textContent = fallbackData.contributionPoint;
+            if (fbAcceptanceEl) fbAcceptanceEl.textContent = `${fallbackData.acceptanceRate}%`;
+            if (fbEasyEl) fbEasyEl.textContent = fallbackData.easySolved;
+            if (fbMediumEl) fbMediumEl.textContent = fallbackData.mediumSolved;
+            if (fbHardEl) fbHardEl.textContent = fallbackData.hardSolved;
 
             console.warn('⚠️ Using fallback LeetCode data due to API error');
         }
@@ -538,6 +567,11 @@ class LiveStats {
     async loadGitHubCalendar() {
         try {
             const calendarContainer = document.getElementById('github-calendar');
+            
+            if (!calendarContainer) {
+                console.warn('GitHub calendar container not found');
+                return;
+            }
 
             // Create GitHub calendar using multiple reliable sources
             const calendarHTML = `
@@ -558,13 +592,16 @@ class LiveStats {
 
         } catch (error) {
             console.error('Error loading GitHub calendar:', error);
-            document.getElementById('github-calendar').innerHTML = `
-                <div style="color: rgba(255,255,255,0.7); text-align: center;">
-                    <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 15px;"></i>
-                    <p>Unable to load GitHub activity</p>
-                    <p>Visit <a href="https://github.com/${this.githubUsername}" target="_blank" style="color: #667eea;">my GitHub profile</a> to see activity</p>
-                </div>
-            `;
+            const calendarContainer = document.getElementById('github-calendar');
+            if (calendarContainer) {
+                calendarContainer.innerHTML = `
+                    <div style="color: rgba(255,255,255,0.7); text-align: center;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 15px;"></i>
+                        <p>Unable to load GitHub activity</p>
+                        <p>Visit <a href="https://github.com/${this.githubUsername}" target="_blank" style="color: #667eea;">my GitHub profile</a> to see activity</p>
+                    </div>
+                `;
+            }
         }
     }
 
@@ -648,7 +685,10 @@ class LiveStats {
             </div>
         `;
 
-        document.querySelector('.stats-grid').innerHTML = errorMessage;
+        const statsGrid = document.querySelector('.stats-grid');
+        if (statsGrid) {
+            statsGrid.innerHTML = errorMessage;
+        }
     }
 
     // Method to refresh stats manually
@@ -666,7 +706,10 @@ class LiveStats {
             });
         };
 
-        document.querySelector('.live-stats .container').appendChild(refreshButton);
+        const statsContainer = document.querySelector('.live-stats .container');
+        if (statsContainer) {
+            statsContainer.appendChild(refreshButton);
+        }
     }
 
     updateSkillsProgress(data) {
